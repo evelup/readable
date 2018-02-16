@@ -1,0 +1,64 @@
+body, * {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+
+p, h3, a {
+  margin-bottom: 12px;
+  line-height: 20px;
+}
+
+.section {
+  margin-bottom: 22px;
+}
+
+.padding {
+  padding: 20px;
+}
+
+.box {
+  border: 1px solid #ccc;
+  padding: 12px;
+  border-radius: 4px;
+  margin-bottom: 12px;
+}
+
+.heading {
+  margin-bottom: 22px;
+}
+
+.row {
+  display: flex;
+}
+
+.row.center {
+  align-items: center;
+}
+
+.row.space-between {
+  justify-content: space-between;
+}
+
+.button {
+  color: #fff;
+  padding: 6px 26px;
+  background: #00ffba;
+  border-radius: 4px;
+  text-decoration: none;
+}
+
+.noUnderline {
+  text-decoration: none;
+}
+
+.gray {
+  color: #ccc;
+}
+
+.score {
+  color: #00ffba;
+  font-weight: bold;
+  margin-left: 12px;
+}
