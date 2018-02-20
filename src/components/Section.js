@@ -1,9 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const Section = ({ children, path }) => {
+const Section = ({ children, path, id, ...rest }) => {
   return (
-    <div className="section">
+    <div className="section" key={id} {...rest}>
       {children}
     </div>
   )

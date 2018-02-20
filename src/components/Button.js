@@ -1,9 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const Button = ({ children, path }) => {
+const Button = ({ children, path, black, margin, onClick }) => {
   return (
-    <Link className="button" to={path}>
+    <Link
+      className={`button ${black && 'black'} ${margin && margin}`}
+      to={path}
+      onClick={onClick}
+    >
       {children}
     </Link>
   )

@@ -5,3 +5,5 @@ export { default as Row } from './Row';
 export { default as Button } from './Button';
 export { default as Post } from './Post';
 export { default as Section } from './Section';
+export { default as Input } from './Input';
+export { default as Comment } from './Comment';

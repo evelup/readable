@@ -7,7 +7,8 @@ if (!token)
 
 const headers = {
   'Accept': 'application/json',
-  'Authorization': token
+  'Authorization': token,
+  'Content-Type': 'application/json',
 };
 
 
@@ -22,8 +23,70 @@ export const getAllPosts = () => {
     .then(res => res.json())
 };
 
-export const getSinglePost = () => {
-  return fetch(`${api}/posts/:id`, { headers })
+export const getSinglePost = id => {
+  return fetch(`${api}/posts/${id}`, { headers })
+    .then(res => res.json())
+};
+
+export const addPost = form => {
+  return fetch(`${api}/posts`, {
+    method: 'post',
+    headers,
+    body: JSON.stringify(form)
+  })
+    .then(res => res.json())
+};
+
+export const editPost = form => {
+  return fetch(`${api}/posts/${form.id}`, {
+    headers,
+    method: 'put',
+    body: JSON.stringify(form)
+  })
+    .then(res => res.json())
+};
+
+export const deletePost = id => {
+  return fetch(`${api}/posts/${id}`, {
+    headers,
+    method: 'delete'
+  })
+    .then(res => res.json())
+};
+
+export const getComments = id => {
+  return fetch(`${api}/posts/${id}/comments`, { headers })
+    .then(res => res.json())
+};
+
+export const getSingleComment = id => {
+  return fetch(`${api}/comments/${id}`, { headers })
+    .then(res => res.json())
+};
+
+export const addComment = form => {
+  return fetch(`${api}/comments`, {
+    headers,
+    method: 'post',
+    body: JSON.stringify(form)
+  })
+    .then(res => res.json())
+};
+
+export const editComment = form => {
+  return fetch(`${api}/comments/${form.id}`, {
+    headers,
+    method: 'put',
+    body: JSON.stringify(form)
+  })
+    .then(res => res.json())
+};
+
+export const deleteComment = id => {
+  return fetch(`${api}/comments/${id}`, {
+    headers,
+    method: 'delete'
+  })
     .then(res => res.json())
 };
 

@@ -9,7 +9,7 @@ import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 import thunk from 'redux-thunk';
 
-const middleware = [thunk]
+const middleware = [thunk];
 const composeEnhancers =
   typeof window === 'object' &&
   window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ?

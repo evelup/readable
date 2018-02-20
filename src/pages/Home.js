@@ -23,11 +23,11 @@ class Home extends Component {
 
   render() {
     const { categories, posts } = this.props;
-    console.log('posts', posts);
+    // console.log('posts', posts);
 
     return (
       <Padding>
-        <Section>
+        <Section id="categories">
           <Heading>Categories</Heading>
           <Row>
             {categories.map(category => {
@@ -39,10 +39,10 @@ class Home extends Component {
             })}
           </Row>
         </Section>
-        <Section>
+        <Section id="posts">
           <Row alignItems="center" justifyContent="space-between">
             <Heading>All Posts</Heading>
-            <Button path="/form">New Post</Button>
+            <Button path="/posts/new">New Post</Button>
           </Row>
           {posts.map(post => {
             return (
