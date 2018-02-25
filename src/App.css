@@ -55,6 +55,14 @@ p, h3, a {
   border: none;
 }
 
+.ghost {
+  background: #000;
+  color: #fff;
+  border: none;
+  margin-bottom: 0;
+  /*border: 1px solid #000;*/
+}
+
 .noUnderline {
   text-decoration: none;
 }

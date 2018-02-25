@@ -6,7 +6,9 @@ import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import {
   voteUpPost,
-  voteDownPost
+  voteDownPost,
+  deletePost,
+  editComment
 } from '../actions';
 
 
@@ -19,6 +21,14 @@ class Post extends Component {
 
   handleVoteDownPost = id => e => {
     this.props.voteDownPost(id)
+  };
+
+  handleDelete = id => e => {
+    this.props.deletePost(id);
+  };
+
+  handleEdit = id => e => {
+    this.props.history.push(`/posts/${id}/edit`)
   };
 
   render() {
@@ -39,21 +49,37 @@ class Post extends Component {
       <Box id={id} deleted={deleted} >
         <Row justifyContent="space-between" alignItems="center">
           <h3>{title}</h3>
-          <p>{moment(timestamp).format("DD-MM-YYYY")}</p>
+          <Row>
+            <div
+              className="link edit margin-right"
+              onClick={this.handleEdit(id)}
+            >
+              Edit
+            </div>
+            <div
+              className="link delete"
+              onClick={this.handleDelete(id)}
+            >
+              Delete
+            </div>
+          </Row>
         </Row>
-        <Row alignItems="center margin-bottom-small">
-          <p className="score no-margin margin-right">Votes: {voteScore}</p>
-          <VoteControl
-            voteScore={voteScore}
-            voteUp={this.handleVoteUpPost(id)}
-            voteDown={this.handleVoteDownPost(id)}
-          />
-        </Row>
+        <p>Published on {moment(timestamp).format("DD-MM-YYYY")}</p>
         <p>Author: {author}</p>
         <p>Category: {category}</p>
         <p>Comments: {commentCount}</p>
-        {/*<p>{children}</p>*/}
-        <Link to={`/posts/${id}`}>View more</Link>
+        <Row alignItems="center" justifyContent="space-between">
+          <Row alignItems="center">
+            <p className="score no-margin margin-right">Votes: {voteScore}</p>
+            <VoteControl
+              voteScore={voteScore}
+              voteUp={this.handleVoteUpPost(id)}
+              voteDown={this.handleVoteDownPost(id)}
+            />
+          </Row>
+          <Link to={`/posts/${id}`} className="button ghost">View more</Link>
+        </Row>
+
       </Box>
     )
   }
@@ -68,6 +94,8 @@ function mapDispatchToProps(dispatch) {
   return {
     voteUpPost: data => dispatch(voteUpPost(data)),
     voteDownPost: data => dispatch(voteDownPost(data)),
+    deletePost: data => dispatch(deletePost(data)),
+    editComment: data => dispatch(editComment(data)),
   }
 }
 

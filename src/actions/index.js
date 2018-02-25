@@ -3,6 +3,7 @@ import * as ReadableAPI from '../utils/ReadableAPI';
 export const RECEIVE_CATEGORIES = 'RECEIVE_CATEGORIES';
 export const RECEIVE_POSTS = 'RECEIVE_POSTS';
 export const RECEIVE_POST = 'RECEIVE_POST';
+export const DELETE_POST = 'DELETE_POST';
 export const RECEIVE_COMMENTS = 'RECEIVE_COMMENTS';
 export const RECEIVE_COMMENT = 'RECEIVE_COMMENT';
 export const DELETE_COMMENT = 'DELETE_COMMENT';
@@ -59,9 +60,14 @@ export const editPost = form => dispatch => {
     .then(comment => dispatch(receivePost(comment)))
 };
 
+export const deletePostInStore = post => ({
+  type: DELETE_POST,
+  payload: post
+});
+
 export const deletePost  = id => dispatch => {
   return ReadableAPI.deletePost(id)
-    // .then(id => dispatch(deletePost(id)))
+    .then(post => dispatch(deletePostInStore(post)))
 };
 
 export const receiveComments = comments => ({

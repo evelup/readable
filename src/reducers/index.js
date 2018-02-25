@@ -4,6 +4,7 @@ import {
   RECEIVE_CATEGORIES,
   RECEIVE_POSTS,
   RECEIVE_POST,
+  DELETE_POST,
   RECEIVE_COMMENTS,
   RECEIVE_COMMENT,
   DELETE_COMMENT,
@@ -48,6 +49,14 @@ function posts(state = postsInitialState, action) {
         } else {
           post.commentCount = post.commentCount - 1
         }
+      }
+      return newState;
+    }
+    case DELETE_POST: {
+      const newState = state.slice();
+      const index = newState.findIndex(el => el.id === action.payload.id);
+      if (index >= 0) {
+        newState.splice(index, 1)
       }
       return newState;
     }
