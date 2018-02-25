@@ -43,7 +43,7 @@ const Comment = ({
       </Row>
       <p>{children}</p>
       <Row alignItems="center">
-        <p className="score no-margin margin-right">VoteScore: {voteScore}</p>
+        <p className="score no-margin margin-right">Votes: {voteScore}</p>
         <VoteControl
           voteScore={voteScore}
           voteUp={voteUp}

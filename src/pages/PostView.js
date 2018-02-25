@@ -27,14 +27,24 @@ import CommentForm from './CommentForm';
 import { v4 } from 'uuid';
 
 class PostView extends Component {
-  state = {
-    modal: false,
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      modal: false,
+    };
+    this.update = 0;
+  }
 
   componentDidMount(){
     this.props.fetchPost(this.props.match.params.id);
     this.props.fetchComments(this.props.match.params.id);
   }
+
+  componentWillReceiveProps() {
+    this.update += 1;
+    // console.log('receive props this.update', this.update)
+  }
+
 
   handleDelete = id => e => {
     // console.log('id', id);
@@ -112,9 +122,20 @@ class PostView extends Component {
   render() {
     const { posts, comments } = this.props;
     const { match } = this.props;
-
+    // console.log('render this.update', this.update)
     const post = posts.find(el => el.id === match.params.id);
     if (!post) {
+      if (this.update === 2) {
+        return (
+          <Padding>
+            <Section>
+              <div onClick={this.handleGoBack} className="link">Go back</div>
+            </Section>
+            <Heading>404</Heading>
+            <p>This page doesn't exist</p>
+          </Padding>
+        )
+      }
       return <Padding>Loading...</Padding>
     }
     // console.log('post voteScore', post.voteScore);
@@ -146,7 +167,7 @@ class PostView extends Component {
           <p className="gray">Author: {post.author}</p>
           <p className="gray">Category: {post.category}</p>
           <Row alignItems="center" className="margin-bottom-small">
-            <p className="score no-margin margin-right">Votescore: {post.voteScore}</p>
+            <p className="score no-margin margin-right">Votes: {post.voteScore}</p>
             <VoteControl
               voteScore={post.voteScore}
               voteUp={this.handleVoteUpPost(post.id)}
@@ -160,7 +181,7 @@ class PostView extends Component {
             justifyContent="space-between"
             alignItems="center"
           >
-            <h3>All comments</h3>
+            <h3>All comments ({post.commentCount})</h3>
             <div
               className="button margin-bottom"
               onClick={this.handleModal}

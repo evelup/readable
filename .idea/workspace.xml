@@ -2,23 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fd2c604a-f654-4487-90dd-174035ba7f93" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/src/App.css" afterPath="$PROJECT_DIR$/src/App.css" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" afterPath="$PROJECT_DIR$/src/App.js" />
-      <change beforePath="$PROJECT_DIR$/src/actions/index.js" afterPath="$PROJECT_DIR$/src/actions/index.js" />
-      <change beforePath="$PROJECT_DIR$/src/components/Box.js" afterPath="$PROJECT_DIR$/src/components/Box.js" />
       <change beforePath="$PROJECT_DIR$/src/components/Comment.js" afterPath="$PROJECT_DIR$/src/components/Comment.js" />
-      <change beforePath="$PROJECT_DIR$/src/components/Input.js" afterPath="$PROJECT_DIR$/src/components/Input.js" />
-      <change beforePath="$PROJECT_DIR$/src/components/Post.js" afterPath="$PROJECT_DIR$/src/components/Post.js" />
-      <change beforePath="$PROJECT_DIR$/src/components/Row.js" afterPath="$PROJECT_DIR$/src/components/Row.js" />
-      <change beforePath="$PROJECT_DIR$/src/components/index.js" afterPath="$PROJECT_DIR$/src/components/index.js" />
-      <change beforePath="$PROJECT_DIR$/src/pages/CategoryView.js" afterPath="$PROJECT_DIR$/src/pages/CategoryView.js" />
-      <change beforePath="$PROJECT_DIR$/src/pages/CommentForm.js" afterPath="$PROJECT_DIR$/src/pages/CommentForm.js" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Home.js" afterPath="$PROJECT_DIR$/src/pages/Home.js" />
-      <change beforePath="$PROJECT_DIR$/src/pages/PostForm.js" afterPath="$PROJECT_DIR$/src/pages/PostForm.js" />
       <change beforePath="$PROJECT_DIR$/src/pages/PostView.js" afterPath="$PROJECT_DIR$/src/pages/PostView.js" />
-      <change beforePath="$PROJECT_DIR$/src/reducers/index.js" afterPath="$PROJECT_DIR$/src/reducers/index.js" />
-      <change beforePath="$PROJECT_DIR$/src/utils/ReadableAPI.js" afterPath="$PROJECT_DIR$/src/utils/ReadableAPI.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -54,7 +39,7 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="Home.js" pinned="false" current-in-tab="true">
+          <file leaf-file-name="Home.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/pages/Home.js">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="414">
@@ -84,11 +69,11 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="PostView.js" pinned="false" current-in-tab="false">
+          <file leaf-file-name="PostView.js" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/pages/PostView.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="446">
-                  <caret line="61" column="31" lean-forward="true" selection-start-line="61" selection-start-column="31" selection-end-line="61" selection-end-column="31" />
+                <state relative-caret-position="833">
+                  <caret line="132" column="22" lean-forward="false" selection-start-line="132" selection-start-column="22" selection-end-line="132" selection-end-column="22" />
                   <folding />
                 </state>
               </provider>
@@ -120,21 +105,21 @@
                   </provider>
                 </entry>
               </file>
-              <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
+              <file leaf-file-name="index.js" pinned="false" current-in-tab="true">
                 <entry file="file://$PROJECT_DIR$/src/reducers/index.js">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="284">
-                      <caret line="43" column="32" lean-forward="true" selection-start-line="43" selection-start-column="32" selection-end-line="43" selection-end-column="32" />
+                    <state relative-caret-position="638">
+                      <caret line="29" column="28" lean-forward="true" selection-start-line="29" selection-start-column="28" selection-end-line="29" selection-end-column="28" />
                       <folding />
                     </state>
                   </provider>
                 </entry>
               </file>
-              <file leaf-file-name="CategoryView.js" pinned="false" current-in-tab="true">
+              <file leaf-file-name="CategoryView.js" pinned="false" current-in-tab="false">
                 <entry file="file://$PROJECT_DIR$/src/pages/CategoryView.js">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="165">
-                      <caret line="27" column="0" lean-forward="false" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+                    <state relative-caret-position="836">
+                      <caret line="38" column="49" lean-forward="true" selection-start-line="38" selection-start-column="49" selection-end-line="38" selection-end-column="49" />
                       <folding>
                         <marker date="1519595606000" expanded="true" signature="1912:2299" ph="..." />
                       </folding>
@@ -207,8 +192,8 @@
               <file leaf-file-name="Input.js" pinned="false" current-in-tab="true">
                 <entry file="file://$PROJECT_DIR$/src/components/Input.js">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="438">
-                      <caret line="63" column="16" lean-forward="true" selection-start-line="63" selection-start-column="16" selection-end-line="63" selection-end-column="33" />
+                    <state relative-caret-position="174">
+                      <caret line="51" column="19" lean-forward="true" selection-start-line="51" selection-start-column="19" selection-end-line="51" selection-end-column="19" />
                       <folding />
                     </state>
                   </provider>
@@ -289,9 +274,13 @@
       <find>.field</find>
       <find>label</find>
       <find>timesta</find>
-      <find>console.log</find>
       <find>timestamp</find>
       <find>console.log('form</find>
+      <find>All comm</find>
+      <find>console.log</find>
+      <find>commen</find>
+      <find>Votescore:</find>
+      <find>Loading...</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -327,9 +316,9 @@
         <option value="$PROJECT_DIR$/src/App.css" />
         <option value="$PROJECT_DIR$/src/components/Input.js" />
         <option value="$PROJECT_DIR$/src/pages/PostForm.js" />
-        <option value="$PROJECT_DIR$/src/pages/PostView.js" />
         <option value="$PROJECT_DIR$/src/pages/Home.js" />
         <option value="$PROJECT_DIR$/src/pages/CategoryView.js" />
+        <option value="$PROJECT_DIR$/src/pages/PostView.js" />
       </list>
     </option>
   </component>
@@ -468,12 +457,12 @@
       <workItem from="1518971760017" duration="6866000" />
       <workItem from="1519035641324" duration="35849000" />
       <workItem from="1519132300747" duration="27250000" />
-      <workItem from="1519555999516" duration="25939000" />
+      <workItem from="1519555999516" duration="29024000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="132930000" />
+    <option name="totallyTimeSpent" value="136015000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1377" y="23" width="2063" height="1412" extended-state="0" />
@@ -527,7 +516,15 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="1" />
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/pages/PostView.js</url>
+          <line>57</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="2" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -817,14 +814,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/reducers/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="284">
-          <caret line="43" column="32" lean-forward="true" selection-start-line="43" selection-start-column="32" selection-end-line="43" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/App.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="330">
@@ -881,22 +870,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Input.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="438">
-          <caret line="63" column="16" lean-forward="true" selection-start-line="63" selection-start-column="16" selection-end-line="63" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/pages/PostView.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="446">
-          <caret line="61" column="31" lean-forward="true" selection-start-line="61" selection-start-column="31" selection-end-line="61" selection-end-column="31" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/pages/PostForm.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="390">
@@ -921,13 +894,37 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Input.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="174">
+          <caret line="51" column="19" lean-forward="true" selection-start-line="51" selection-start-column="19" selection-end-line="51" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/pages/CategoryView.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="27" column="0" lean-forward="false" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+        <state relative-caret-position="836">
+          <caret line="38" column="49" lean-forward="true" selection-start-line="38" selection-start-column="49" selection-end-line="38" selection-end-column="49" />
           <folding>
             <marker date="1519595606000" expanded="true" signature="1912:2299" ph="..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/reducers/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="638">
+          <caret line="29" column="28" lean-forward="true" selection-start-line="29" selection-start-column="28" selection-end-line="29" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/PostView.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="833">
+          <caret line="132" column="22" lean-forward="false" selection-start-line="132" selection-start-column="22" selection-end-line="132" selection-end-column="22" />
+          <folding />
         </state>
       </provider>
     </entry>
