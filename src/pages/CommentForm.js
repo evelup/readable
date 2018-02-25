@@ -40,7 +40,7 @@ class CommentForm extends Component {
   handleSubmit = e  => {
     e.preventDefault();
 
-    console.log('#', this.state.form, this.props.id)
+    console.log('#', this.state.form, this.props.id);
     let data = {
       ...this.state.form,
     };
@@ -50,7 +50,7 @@ class CommentForm extends Component {
   render() {
     const { comments, id, onClose } = this.props;
 
-    console.log('form', this.state.form);
+    // console.log('form', this.state.form);
 
     return (
       <div className="modal">
@@ -64,9 +64,10 @@ class CommentForm extends Component {
             <Input
               label="Name"
               name="author"
-              onChange={this.handleChange}
+              onChange={!this.props.id && this.handleChange}
               required
               value={this.state.form.author}
+              isEdited={this.props.id}
             />
             <Input
               label="Comment"

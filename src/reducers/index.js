@@ -7,6 +7,7 @@ import {
   RECEIVE_COMMENTS,
   RECEIVE_COMMENT,
   DELETE_COMMENT,
+  UPDATE_POST_COMMENT_COUNT,
 } from "../actions";
 
 const categoriesInitialState = [];
@@ -27,7 +28,7 @@ function posts(state = postsInitialState, action) {
     case RECEIVE_POSTS:
       // console.log('action.payload', action.payload);
       return action.payload;
-    case RECEIVE_POST:
+    case RECEIVE_POST: {
       const newState = state.slice();
       const index = newState.findIndex(el => el.id === action.payload.id);
       if (index >= 0) {
@@ -36,6 +37,20 @@ function posts(state = postsInitialState, action) {
         newState.push(action.payload);
       }
       return newState;
+    }
+    case UPDATE_POST_COMMENT_COUNT: {
+      console.log('updateCC', action.payload.id);
+      const newState = state.slice();
+      const post = newState.find(el => el.id === action.payload.id);
+      if (post) {
+        if (action.payload.upOrDown === 'up') {
+          post.commentCount = post.commentCount + 1
+        } else {
+          post.commentCount = post.commentCount - 1
+        }
+      }
+      return newState;
+    }
     default:
       return state
   }

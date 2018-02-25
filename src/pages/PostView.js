@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 import moment from 'moment';
 import {
   Padding,
@@ -8,7 +8,8 @@ import {
   Section,
   Row,
   Button,
-  Comment
+  Comment,
+  VoteControl
 } from '../components';
 import {
   fetchPost,
@@ -16,7 +17,11 @@ import {
   fetchComments,
   addComment,
   editComment,
-  deleteComment
+  deleteComment,
+  voteUpComment,
+  voteDownComment,
+  voteUpPost,
+  voteDownPost
 } from '../actions';
 import CommentForm from './CommentForm';
 import { v4 } from 'uuid';
@@ -32,7 +37,7 @@ class PostView extends Component {
   }
 
   handleDelete = id => e => {
-    console.log('id', id);
+    // console.log('id', id);
     this.props.deletePost(id);
   };
 
@@ -45,7 +50,7 @@ class PostView extends Component {
       ...form,
       parentId: this.props.match.params.id,
     };
-    console.log('@', form)
+    // console.log('@', form)
     if (form.id) {
       this.props.editComment({
         id: form.id,
@@ -54,12 +59,12 @@ class PostView extends Component {
       })
     } else {
       const uuid = v4();
-      const date = moment();
+      const date = +new Date();
       form = {
         ...form,
         id: uuid,
         timestamp: date,
-      }
+      };
       this.props.addComment(form);
     }
     this.setState({
@@ -80,8 +85,28 @@ class PostView extends Component {
     });
   };
 
+  handleVoteUpComment = id => e => {
+    this.props.voteUpComment(id)
+  };
+
+  handleVoteDownComment = id => e => {
+    this.props.voteDownComment(id)
+  };
+
+  handleVoteUpPost = id => e => {
+    this.props.voteUpPost(id)
+  };
+
+  handleVoteDownPost = id => e => {
+    this.props.voteDownPost(id)
+  };
+
   closeModal = e => {
     this.setState({ modal: false })
+  };
+
+  handleGoBack = e => {
+    this.props.history.goBack()
   };
 
   render() {
@@ -92,11 +117,11 @@ class PostView extends Component {
     if (!post) {
       return <Padding>Loading...</Padding>
     }
-
+    // console.log('post voteScore', post.voteScore);
     return (
       <Padding>
         <Section>
-          <Link to="/">Go back</Link>
+          <div onClick={this.handleGoBack} className="link">Go back</div>
         </Section>
         <Section>
           <Row justifyContent="space-between">
@@ -120,7 +145,14 @@ class PostView extends Component {
           <p className="gray">Published: {moment(post.timestamp).format("DD-MM-YYYY")}</p>
           <p className="gray">Author: {post.author}</p>
           <p className="gray">Category: {post.category}</p>
-          <p className="score">Votescore: {post.voteScore}</p>
+          <Row alignItems="center" className="margin-bottom-small">
+            <p className="score no-margin margin-right">Votescore: {post.voteScore}</p>
+            <VoteControl
+              voteScore={post.voteScore}
+              voteUp={this.handleVoteUpPost(post.id)}
+              voteDown={this.handleVoteDownPost(post.id)}
+            />
+          </Row>
           <p>{post.body}</p>
         </Section>
         <Section>
@@ -148,6 +180,8 @@ class PostView extends Component {
                 parentDeleted={comment.parentDeleted}
                 onDelete={this.handleDeleteComment}
                 onEdit={this.handleEditComment}
+                voteUp={this.handleVoteUpComment(comment.id)}
+                voteDown={this.handleVoteDownComment(comment.id)}
               >
                 {comment.body}
               </Comment>
@@ -176,7 +210,10 @@ function mapDispatchToProps(dispatch) {
     addComment: data => dispatch(addComment(data)),
     editComment: data => dispatch(editComment(data)),
     deleteComment: data => dispatch(deleteComment(data)),
-
+    voteUpComment: data => dispatch(voteUpComment(data)),
+    voteDownComment: data => dispatch(voteDownComment(data)),
+    voteUpPost: data => dispatch(voteUpPost(data)),
+    voteDownPost: data => dispatch(voteDownPost(data)),
   }
 }
 
@@ -191,4 +228,4 @@ function mapStateToProps(state) {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(PostView);
+)(withRouter(PostView));

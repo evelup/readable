@@ -46,7 +46,9 @@ class Input extends Component {
       options,
       onChange,
       value,
-      required
+      required,
+      isEdited,
+      inline
     } = this.props;
 
     if (type === 'textarea') {
@@ -71,7 +73,7 @@ class Input extends Component {
     if (type === 'select') {
       return (
         <div className="field">
-          <label htmlFor="">
+          <label htmlFor="" className={`${inline && 'inline'}`}>
             {label}
             <select
               name={name}
@@ -79,6 +81,7 @@ class Input extends Component {
               onChange={onChange}
               value={value}
               required={required}
+              className={`${isEdited && 'disabled'} ${inline && 'margin-left'}`}
             >
               {this.renderOptions(options)}
             </select>
@@ -108,6 +111,7 @@ class Input extends Component {
             onChange={onChange}
             value={value}
             required={required}
+            className={isEdited && 'disabled'}
           />
         </label>
       </div>

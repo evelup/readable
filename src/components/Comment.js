@@ -2,7 +2,8 @@ import React from 'react';
 import moment from 'moment';
 import {
   Box,
-  Row
+  Row,
+  VoteControl
 } from './'
 
 const Comment = ({
@@ -16,9 +17,11 @@ const Comment = ({
   parentDeleted,
   onDelete,
   onEdit,
+  voteUp,
+  voteDown
 }) => {
   return (
-    <Box key={id}>
+    <Box key={id} id={id}>
       <Row justifyContent="space-between">
         <p className="gray">
           {author} commented on {moment(timestamp).format("DD-MM-YYYY")}
@@ -39,7 +42,14 @@ const Comment = ({
         </Row>
       </Row>
       <p>{children}</p>
-      <p className="score">VoteScore {voteScore}</p>
+      <Row alignItems="center">
+        <p className="score no-margin margin-right">VoteScore: {voteScore}</p>
+        <VoteControl
+          voteScore={voteScore}
+          voteUp={voteUp}
+          voteDown={voteDown}
+        />
+      </Row>
     </Box>
   )
 };

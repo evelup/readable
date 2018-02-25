@@ -6,8 +6,8 @@ export const RECEIVE_POST = 'RECEIVE_POST';
 export const RECEIVE_COMMENTS = 'RECEIVE_COMMENTS';
 export const RECEIVE_COMMENT = 'RECEIVE_COMMENT';
 export const DELETE_COMMENT = 'DELETE_COMMENT';
-// export const SAVE_POST = 'SAVE_POST';
-// export const DELETE_POST = 'DELETE_POST';
+export const UPDATE_POST_COMMENT_COUNT = 'UPDATE_POST_COMMENT_COUNT';
+
 
 export const receiveCategories = (categories) => ({
   type: RECEIVE_CATEGORIES,
@@ -26,6 +26,11 @@ export const receivePosts = (posts) => ({
 
 export const fetchPosts = () => dispatch => {
   return ReadableAPI.getAllPosts()
+    .then(posts => dispatch(receivePosts(posts)))
+};
+
+export const fetchPostsFromCategory = category => dispatch => {
+  return ReadableAPI.getPostFromCategory(category)
     .then(posts => dispatch(receivePosts(posts)))
 };
 
@@ -81,8 +86,20 @@ export const fetchComment = id => dispatch => {
 
 export const addComment = form => dispatch => {
   return ReadableAPI.addComment(form)
-    .then(form => dispatch(receiveComment(form)))
+    .then(comment => {
+      dispatch(receiveComment(comment))
+      return comment
+    })
+    .then(comment => dispatch(updatePostCommentCount(comment.parentId, 'up')))
 };
+
+export const updatePostCommentCount = (id, upOrDown) => ({
+  type: UPDATE_POST_COMMENT_COUNT,
+  payload: {
+    id,
+    upOrDown
+    }
+});
 
 export const editComment = form => dispatch => {
   return ReadableAPI.editComment(form)
@@ -96,6 +113,30 @@ export const deleteCommentInStore = comment => ({
 
 export const deleteComment = id => dispatch => {
   return ReadableAPI.deleteComment(id)
-    .then(comment => dispatch(deleteCommentInStore(comment)))
+    .then(comment => {
+      dispatch(deleteCommentInStore(comment))
+      return comment
+    })
+    .then(comment => dispatch(updatePostCommentCount(comment.parentId, 'down')))
+};
+
+export const voteUpComment = id => dispatch => {
+  return ReadableAPI.voteUpComment(id)
+    .then(comment => dispatch(receiveComment(comment)))
+};
+
+export const voteDownComment = id => dispatch => {
+  return ReadableAPI.voteDownComment(id)
+    .then(comment => dispatch(receiveComment(comment)))
+};
+
+export const voteUpPost = id => dispatch => {
+  return ReadableAPI.voteUpPost(id)
+    .then(post => dispatch(receivePost(post)))
+};
+
+export const voteDownPost= id => dispatch => {
+  return ReadableAPI.voteDownPost(id)
+    .then(post => dispatch(receivePost(post)))
 };
 

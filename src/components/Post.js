@@ -1,11 +1,26 @@
 import React, { Component } from 'react';
-import { Box, Row } from './';
+import { Box, Row, VoteControl } from './';
 import { Link } from 'react-router-dom';
 import moment from 'moment';
-import { withRouter } from 'react-router-dom'
+import { withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
+import {
+  voteUpPost,
+  voteDownPost
+} from '../actions';
 
 
 class Post extends Component {
+
+  handleVoteUpPost = id => e => {
+    console.log('voteUp', id);
+    this.props.voteUpPost(id)
+  };
+
+  handleVoteDownPost = id => e => {
+    this.props.voteDownPost(id)
+  };
+
   render() {
     const {
       title,
@@ -17,20 +32,26 @@ class Post extends Component {
       children,
       id,
       deleted,
+      commentCount
     } = this.props;
 
     return (
-      <Box id={id} deleted={deleted} onClick={this.handlePush(id)}>
+      <Box id={id} deleted={deleted} >
         <Row justifyContent="space-between" alignItems="center">
-          <Row>
-            <h3>{title}</h3>
-
-            <p className="score margin-left">/ {voteScore} votes</p>
-          </Row>
+          <h3>{title}</h3>
           <p>{moment(timestamp).format("DD-MM-YYYY")}</p>
         </Row>
-        <p className="gray">Author: {author}</p>
+        <Row alignItems="center margin-bottom-small">
+          <p className="score no-margin margin-right">Votes: {voteScore}</p>
+          <VoteControl
+            voteScore={voteScore}
+            voteUp={this.handleVoteUpPost(id)}
+            voteDown={this.handleVoteDownPost(id)}
+          />
+        </Row>
+        <p>Author: {author}</p>
         <p>Category: {category}</p>
+        <p>Comments: {commentCount}</p>
         {/*<p>{children}</p>*/}
         <Link to={`/posts/${id}`}>View more</Link>
       </Box>
@@ -42,4 +63,21 @@ class Post extends Component {
   };
 }
 
-export default withRouter(Post);
+
+function mapDispatchToProps(dispatch) {
+  return {
+    voteUpPost: data => dispatch(voteUpPost(data)),
+    voteDownPost: data => dispatch(voteDownPost(data)),
+  }
+}
+
+function mapStateToProps(state) {
+  return {
+    state
+  }
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(withRouter(Post));

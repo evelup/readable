@@ -1,5 +1,5 @@
 import React, {Component } from 'react';
-import { Link, withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import moment from 'moment';
 import { v4 } from 'uuid';
@@ -49,7 +49,7 @@ class PostForm extends Component {
       this.props.addPost({
         ...this.state.form,
         id: uuid,
-        timestamp: moment(),
+        timestamp: +new Date(),
       });
     } else {
       this.props.editPost({
@@ -93,18 +93,20 @@ class PostForm extends Component {
           <Input
             label="Author"
             name="author"
-            onChange={this.handleChange}
+            onChange={!this.id && this.handleChange}
             value={form.author}
             required
+            isEdited={this.id}
           />
           <Input
             label="Category"
             name="category"
             type="select"
             options={options}
-            onChange={this.handleChange}
+            onChange={!this.id && this.handleChange}
             value={form.category}
             required
+            isEdited={this.id}
           />
           <Input
             label="Title"

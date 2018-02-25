@@ -7,7 +7,8 @@ import {
   Row,
   Button,
   Post,
-  Section
+  Section,
+  Input
 } from '../components';
 import {
   fetchCategories,
@@ -16,14 +17,44 @@ import {
 import { connect } from 'react-redux';
 
 class Home extends Component {
+  state = {
+    sort: 'date'
+  };
+
   componentDidMount() {
     this.props.fetchCategories();
     this.props.fetchPosts();
   }
 
+  handleSort = e => {
+    this.setState({ sort: e.target.value })
+  };
+
   render() {
     const { categories, posts } = this.props;
-    // console.log('posts', posts);
+    let postsSorted = posts.slice();
+    if (this.state.sort === 'votes') {
+      postsSorted.sort(function(a,b) {
+        if (a.voteScore < b.voteScore) {
+          return 1
+        } else if (a.voteScore === b.voteScore) {
+          return 0
+        } else {
+          return -1
+        }
+      })
+    } else {
+      postsSorted.sort(function(a, b) {
+        // console.log('compare', a.timestamp, b.timestamp)
+        if (a.timestamp < b.timestamp) {
+          return 1
+        } else if (a.timestamp === b.timestamp) {
+          return 0
+        } else {
+          return -1
+        }
+      });
+    }
 
     return (
       <Padding>
@@ -33,7 +64,7 @@ class Home extends Component {
             {categories.map(category => {
               return (
                 <Link key={category.name} to={`/category/${category.path}`}>
-                  <Box>{category.name}</Box>
+                  <Box className="margin-right">{category.name}</Box>
                 </Link>
               )
             })}
@@ -41,10 +72,22 @@ class Home extends Component {
         </Section>
         <Section id="posts">
           <Row alignItems="center" justifyContent="space-between">
-            <Heading>All Posts</Heading>
+            <Heading>All posts</Heading>
             <Button path="/posts/new">New Post</Button>
           </Row>
-          {posts.map(post => {
+          <Row>
+            <Input
+              label="Sort by"
+              name="sort"
+              type="select"
+              options={['date', 'votes']}
+              value={this.state.sort}
+              onChange={this.handleSort}
+              inline
+            />
+          </Row>
+          {postsSorted.map(post => {
+            // console.log('#commentCount', post.commentCount);
             return (
               <Post
                 key={post.id}

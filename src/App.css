@@ -76,6 +76,10 @@ p, h3, a {
   margin-bottom: 22px;
 }
 
+.margin-bottom-small {
+  margin-bottom: 12px;
+}
+
 .margin-right {
   margin-right: 12px;
 }
@@ -84,6 +88,9 @@ p, h3, a {
   margin-left: 12px;
 }
 
+.no-margin {
+  margin-bottom: 0;
+}
 /*.column {*/
   /*display: flex;*/
   /*flex-direction: column;*/
@@ -92,6 +99,16 @@ p, h3, a {
 input, textarea, label, select {
   display: block;
   width: 100%;
+}
+
+label.inline {
+  display: flex;
+  white-space: nowrap;
+  align-items: center;
+}
+
+.disabled {
+  color: #ccc;
 }
 
 input, textarea, select, option {
@@ -178,4 +195,24 @@ select {
 
 .line:last-of-type {
   transform: translate(0, -1px) rotate(-45deg);
+}
+
+.control {
+  border: 1px solid #00ffba;
+  border-radius: 4px;
+  padding: 2px 6px;
+  min-width: 26px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #00ffba;
+  /*font-weight: 700;*/
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.control.minus {
+  color: #000;
+  border-color: #000;
 }

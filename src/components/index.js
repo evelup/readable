@@ -7,3 +7,4 @@ export { default as Post } from './Post';
 export { default as Section } from './Section';
 export { default as Input } from './Input';
 export { default as Comment } from './Comment';
+export { default as VoteControl } from './VoteControl';
