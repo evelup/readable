@@ -28,4 +28,4 @@ node server
 ```
 
 ## More Information
-[Udacity API Server ](https://github.com/udacity/reactnd-project-readable-starter/blob/master/api-server/README.md).
+[Udacity API documentation](https://github.com/udacity/reactnd-project-readable-starter/blob/master/api-server/README.md)
