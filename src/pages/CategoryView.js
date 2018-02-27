@@ -44,7 +44,6 @@ class CategoryView extends Component {
       })
     } else {
       postsSorted.sort(function(a, b) {
-        // console.log('compare', a.timestamp, b.timestamp)
         if (a.timestamp < b.timestamp) {
           return 1
         } else if (a.timestamp === b.timestamp) {
@@ -62,7 +61,7 @@ class CategoryView extends Component {
         </Section>
         <Row alignItems="center" justifyContent="space-between">
           <Heading>{`All post from ${this.category} category`}</Heading>
-          <Button path="/posts/new">New Post</Button>
+          <Button path={`/${this.category}/new-post`}>New Post</Button>
         </Row>
         <Row>
           <Input
@@ -108,6 +107,8 @@ function mapDispatchToProps(dispatch) {
     fetchPostsFromCategory: data => dispatch(fetchPostsFromCategory(data))
   }
 }
+
+
 
 export default connect(
   mapStateToProps,

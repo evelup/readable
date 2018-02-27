@@ -63,7 +63,7 @@ class Home extends Component {
           <Row>
             {categories.map(category => {
               return (
-                <Link key={category.name} to={`/category/${category.path}`}>
+                <Link key={category.name} to={`/${category.path}`}>
                   <Box className="margin-right">{category.name}</Box>
                 </Link>
               )
@@ -73,7 +73,7 @@ class Home extends Component {
         <Section id="posts">
           <Row alignItems="center" justifyContent="space-between">
             <Heading>All posts</Heading>
-            <Button path="/posts/new">New Post</Button>
+            <Button path="/new-post">New Post</Button>
           </Row>
           <Row>
             <Input

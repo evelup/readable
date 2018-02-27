@@ -27,8 +27,8 @@ class Post extends Component {
     this.props.deletePost(id);
   };
 
-  handleEdit = id => e => {
-    this.props.history.push(`/posts/${id}/edit`)
+  handleEdit = (id, category) => e => {
+    this.props.history.push(`/${category}/${id}/edit`)
   };
 
   render() {
@@ -52,7 +52,7 @@ class Post extends Component {
           <Row>
             <div
               className="link edit margin-right"
-              onClick={this.handleEdit(id)}
+              onClick={this.handleEdit(id, category)}
             >
               Edit
             </div>
@@ -77,7 +77,7 @@ class Post extends Component {
               voteDown={this.handleVoteDownPost(id)}
             />
           </Row>
-          <Link to={`/posts/${id}`} className="button ghost">View more</Link>
+          <Link to={`/${category}/${id}`} className="button ghost">View more</Link>
         </Row>
 
       </Box>

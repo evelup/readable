@@ -33,7 +33,6 @@ class PostForm extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    // console.log('nextProps', nextProps);
     if (this.id) {
       const post = this.props.posts.find(post => post.id === this.id);
       if (post) {
@@ -73,7 +72,9 @@ class PostForm extends Component {
     this.props.history.goBack()
   };
 
+
   render() {
+    console.log('this.id', this.props.match.params);
     const { categories, posts, match } = this.props;
     const { form } = this.state;
 

@@ -149,7 +149,7 @@ class PostView extends Component {
             <Heading>{post.title}</Heading>
             <Row alignItems="center" justifyContent="space-between">
               <Button
-                path={`/posts/${match.params.id}/edit`}
+                path={`/${match.params.id}/edit`}
                 margin="margin-right"
               >
                 Edit

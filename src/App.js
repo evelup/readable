@@ -6,17 +6,16 @@ import PostView from './pages/PostView';
 import PostForm from './pages/PostForm';
 import './App.css';
 
-const Form = () => (<div>Create/Edit View</div>);
-
 class App extends Component {
   render() {
     return (
       <Switch>
         <Route exact path="/" component={Home} />
-        <Route exact path="/category/:category" component={CategoryView} />
-        <Route exact path="/posts/new" component={PostForm} />
-        <Route exact path="/posts/:id/edit" component={PostForm} />
-        <Route exact path="/posts/:id" component={PostView} />
+        <Route exact path="/new-post" component={PostForm} />
+        <Route exact path="/:category/new-post/" component={PostForm} />
+        <Route exact path="/:category/:id/edit" component={PostForm} />
+        <Route exact path="/:category/:id" component={PostView} />
+        <Route exact path="/:category" component={CategoryView} />
       </Switch>
     );
   }
