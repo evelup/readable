@@ -40,8 +40,8 @@ const Post = ({ // destructure props as parameters
     deletePost(id);
   };
 
-  const handleEdit = id => e => {
-    history.push(`/posts/${id}/edit`)
+  const handleEdit = (id, category) => e => {
+    history.push(`/${category}/${id}/edit`)
   };
 
   const handlePush = id => e => {
@@ -55,7 +55,7 @@ const Post = ({ // destructure props as parameters
         <Row>
           <div
             className="link edit margin-right"
-            onClick={handleEdit(id)}
+            onClick={handleEdit(id, category)}
           >
             Edit
           </div>
@@ -80,7 +80,7 @@ const Post = ({ // destructure props as parameters
             voteDown={handleVoteDownPost(id)}
           />
         </Row>
-        <Link to={`/posts/${id}`} className="button ghost">View more</Link>
+        <Link to={`/${category}/${id}`} className="button ghost">View more</Link>
       </Row>
     </Box>
   )
