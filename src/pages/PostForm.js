@@ -1,13 +1,11 @@
 import React, {Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import moment from 'moment';
-import { v4 } from 'uuid';
+import { generateUuid } from '../utils/helpers';
 import {
   Padding,
   Section,
   Input,
-  Button,
 } from '../components';
 import {
   fetchCategories,
@@ -43,7 +41,7 @@ class PostForm extends Component {
 
   handleSubmit = id => e => {
     e.preventDefault();
-    const uuid = v4();
+    const uuid = generateUuid();
     if (!this.id) {
       this.props.addPost({
         ...this.state.form,
@@ -74,7 +72,6 @@ class PostForm extends Component {
 
 
   render() {
-    console.log('this.id', this.props.match.params);
     const { categories, posts, match } = this.props;
     const { form } = this.state;
 

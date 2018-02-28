@@ -11,6 +11,7 @@ import {
   Input
 } from '../components';
 import { Link } from 'react-router-dom';
+import { sortPosts } from '../utils/helpers';
 
 class CategoryView extends Component {
   constructor(props) {
@@ -30,29 +31,7 @@ class CategoryView extends Component {
 
   render() {
     const { posts } = this.props;
-
-    let postsSorted = posts.slice();
-    if (this.state.sort === 'votes') {
-      postsSorted.sort(function(a,b) {
-        if (a.voteScore < b.voteScore) {
-          return 1
-        } else if (a.voteScore === b.voteScore) {
-          return 0
-        } else {
-          return -1
-        }
-      })
-    } else {
-      postsSorted.sort(function(a, b) {
-        if (a.timestamp < b.timestamp) {
-          return 1
-        } else if (a.timestamp === b.timestamp) {
-          return 0
-        } else {
-          return -1
-        }
-      });
-    }
+    const postsSorted = sortPosts(posts, this.state.sort);
 
     return (
       <Padding>

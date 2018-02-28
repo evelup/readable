@@ -39,8 +39,6 @@ class CommentForm extends Component {
 
   handleSubmit = e  => {
     e.preventDefault();
-
-    console.log('#', this.state.form, this.props.id);
     let data = {
       ...this.state.form,
     };
@@ -49,8 +47,6 @@ class CommentForm extends Component {
 
   render() {
     const { comments, id, onClose } = this.props;
-
-    // console.log('form', this.state.form);
 
     return (
       <div className="modal">

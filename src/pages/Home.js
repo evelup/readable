@@ -14,7 +14,9 @@ import {
   fetchCategories,
   fetchPosts,
 } from '../actions';
+
 import { connect } from 'react-redux';
+import { sortPosts } from '../utils/helpers';
 
 class Home extends Component {
   state = {
@@ -32,29 +34,7 @@ class Home extends Component {
 
   render() {
     const { categories, posts } = this.props;
-    let postsSorted = posts.slice();
-    if (this.state.sort === 'votes') {
-      postsSorted.sort(function(a,b) {
-        if (a.voteScore < b.voteScore) {
-          return 1
-        } else if (a.voteScore === b.voteScore) {
-          return 0
-        } else {
-          return -1
-        }
-      })
-    } else {
-      postsSorted.sort(function(a, b) {
-        // console.log('compare', a.timestamp, b.timestamp)
-        if (a.timestamp < b.timestamp) {
-          return 1
-        } else if (a.timestamp === b.timestamp) {
-          return 0
-        } else {
-          return -1
-        }
-      });
-    }
+    const postsSorted = sortPosts(posts, this.state.sort);
 
     return (
       <Padding>
@@ -87,7 +67,6 @@ class Home extends Component {
             />
           </Row>
           {postsSorted.map(post => {
-            // console.log('#commentCount', post.commentCount);
             return (
               <Post
                 key={post.id}

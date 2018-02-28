@@ -34,7 +34,6 @@ class Input extends Component {
   };
 
   handleChange = e => {
-    // console.log('target value', e.target.value);
     this.setState({ value: e.target.value })
   };
 

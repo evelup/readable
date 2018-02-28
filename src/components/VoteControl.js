@@ -15,7 +15,6 @@ class VoteControl extends Component {
   };
 
   render() {
-    // console.log('voteScore', this.state.voteScore);
     const { className, onClick } = this.props;
     return (
       <Row>

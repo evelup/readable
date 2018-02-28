@@ -1,10 +1,10 @@
 import React from 'react';
-import moment from 'moment';
 import {
   Box,
   Row,
   VoteControl
 } from './'
+import { dateFormat } from '../utils/helpers'
 
 const Comment = ({
   id,
@@ -24,7 +24,7 @@ const Comment = ({
     <Box key={id} id={id}>
       <Row justifyContent="space-between">
         <p className="gray">
-          {author} commented on {moment(timestamp).format("DD-MM-YYYY")}
+          {author} commented on {dateFormat(timestamp)}
         </p>
         <Row>
           <div

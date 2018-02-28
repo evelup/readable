@@ -1,5 +1,4 @@
 import { combineReducers } from 'redux';
-import { getAllCategories } from '../utils/ReadableAPI';
 import {
   RECEIVE_CATEGORIES,
   RECEIVE_POSTS,
@@ -9,7 +8,7 @@ import {
   RECEIVE_COMMENT,
   DELETE_COMMENT,
   UPDATE_POST_COMMENT_COUNT,
-} from "../actions";
+} from '../actions';
 
 const categoriesInitialState = [];
 const postsInitialState = [];
@@ -17,18 +16,20 @@ const commentsInitialState = [];
 
 function categories(state = categoriesInitialState, action) {
   switch(action.type) {
-    case RECEIVE_CATEGORIES:
+    case RECEIVE_CATEGORIES: {
       return action.payload
-    default:
+    }
+    default: {
       return state
+    }
   }
 }
 
 function posts(state = postsInitialState, action) {
   switch(action.type) {
-    case RECEIVE_POSTS:
-      // console.log('action.payload', action.payload);
+    case RECEIVE_POSTS: {
       return action.payload;
+    }
     case RECEIVE_POST: {
       const newState = state.slice();
       const index = newState.findIndex(el => el.id === action.payload.id);
@@ -40,7 +41,6 @@ function posts(state = postsInitialState, action) {
       return newState;
     }
     case UPDATE_POST_COMMENT_COUNT: {
-      console.log('updateCC', action.payload.id);
       const newState = state.slice();
       const post = newState.find(el => el.id === action.payload.id);
       if (post) {
@@ -60,15 +60,17 @@ function posts(state = postsInitialState, action) {
       }
       return newState;
     }
-    default:
+    default: {
       return state
+    }
   }
 }
 
 function comments(state = commentsInitialState, action) {
   switch(action.type) {
-    case RECEIVE_COMMENTS:
+    case RECEIVE_COMMENTS: {
       return action.payload;
+    }
     case RECEIVE_COMMENT: {
       const newState = state.slice();
       const index = newState.findIndex(el => el.id === action.payload.id);
@@ -82,14 +84,14 @@ function comments(state = commentsInitialState, action) {
     case DELETE_COMMENT: {
       const newState = state.slice();
       const index = newState.findIndex( el => el.id === action.payload.id);
-      // console.log('index', index);
       if (index >= 0) {
         newState.splice(index, 1)
       }
       return newState;
     }
-    default:
+    default: {
       return state
+    }
   }
 }
 

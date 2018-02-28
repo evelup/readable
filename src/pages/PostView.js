@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom'
-import moment from 'moment';
+import { dateFormat } from '../utils/helpers'
 import {
   Padding,
   Heading,
@@ -24,7 +24,7 @@ import {
   voteDownPost
 } from '../actions';
 import CommentForm from './CommentForm';
-import { v4 } from 'uuid';
+import { generateUuid } from '../utils/helpers';
 
 class PostView extends Component {
   constructor(props) {
@@ -42,12 +42,10 @@ class PostView extends Component {
 
   componentWillReceiveProps() {
     this.update += 1;
-    // console.log('receive props this.update', this.update)
   }
 
 
   handleDelete = id => e => {
-    // console.log('id', id);
     this.props.deletePost(id);
   };
 
@@ -60,7 +58,6 @@ class PostView extends Component {
       ...form,
       parentId: this.props.match.params.id,
     };
-    // console.log('@', form)
     if (form.id) {
       this.props.editComment({
         id: form.id,
@@ -68,7 +65,7 @@ class PostView extends Component {
         timestamp: form.timestamp
       })
     } else {
-      const uuid = v4();
+      const uuid = generateUuid();
       const date = +new Date();
       form = {
         ...form,
@@ -84,7 +81,6 @@ class PostView extends Component {
   };
 
   handleDeleteComment = id => {
-    // console.log('delete id', id);
     this.props.deleteComment(id);
   };
 
@@ -122,7 +118,6 @@ class PostView extends Component {
   render() {
     const { posts, comments } = this.props;
     const { match } = this.props;
-    // console.log('render this.update', this.update)
     const post = posts.find(el => el.id === match.params.id);
     if (!post) {
       if (this.update === 2) {
@@ -138,7 +133,6 @@ class PostView extends Component {
       }
       return <Padding>Loading...</Padding>
     }
-    // console.log('post voteScore', post.voteScore);
     return (
       <Padding>
         <Section>
@@ -149,7 +143,7 @@ class PostView extends Component {
             <Heading>{post.title}</Heading>
             <Row alignItems="center" justifyContent="space-between">
               <Button
-                path={`/${match.params.id}/edit`}
+                path={`/${post.category}/${match.params.id}/edit`}
                 margin="margin-right"
               >
                 Edit
@@ -163,7 +157,7 @@ class PostView extends Component {
               </Button>
             </Row>
           </Row>
-          <p className="gray">Published: {moment(post.timestamp).format("DD-MM-YYYY")}</p>
+          <p className="gray">Published: {dateFormat(post.timestamp)}</p>
           <p className="gray">Author: {post.author}</p>
           <p className="gray">Category: {post.category}</p>
           <Row alignItems="center" className="margin-bottom-small">
